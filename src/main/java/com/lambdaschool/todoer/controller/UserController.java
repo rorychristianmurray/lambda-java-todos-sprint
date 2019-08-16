@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -57,10 +58,18 @@ public class UserController
 
     @PostMapping(value = "/todo/{userid}")
     public ResponseEntity<?> addNewTodo(@Valid @RequestBody Todo newTodo, @PathVariable int userid) throws URISyntaxException {
-        
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+       newTodo.setUser(userService.findUserByName(authentication.getName()));
         todoService.save(new Todo(newTodo.getDescription(), new Date(), userService.findUserById(userid)));
         return new ResponseEntity<>(null, HttpStatus.CREATED);
     }
+
+//    @PostMapping(value = "/todo/{userid}")
+//    public ResponseEntity<?> addNewTodo(@Valid @RequestBody Todo newTodo, @PathVariable int userid) throws URISyntaxException {
+//
+//        todoService.save(new Todo(newTodo.getDescription(), new Date(), userService.findUserById(userid)));
+//        return new ResponseEntity<>(null, HttpStatus.CREATED);
+//    }
 
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
