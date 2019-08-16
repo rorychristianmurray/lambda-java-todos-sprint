@@ -20,5 +20,5 @@ public interface TodoService
 
     Todo update(Todo quote, long id);
 
-    ArrayList<CountTodos> getCountQuotes();
+    ArrayList<CountTodos> getCountTodos();
 }
