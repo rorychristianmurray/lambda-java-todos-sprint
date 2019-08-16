@@ -2,6 +2,7 @@ package com.lambdaschool.todoer.repository;
 
 
 import com.lambdaschool.todoer.model.Todo;
+import com.lambdaschool.todoer.view.CountTodos;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
