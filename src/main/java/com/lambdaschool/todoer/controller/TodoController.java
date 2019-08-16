@@ -14,7 +14,7 @@ public class TodoController
     @Autowired
     TodoService todoService;
 
-    @PutMapping(value = "/todo/{todoid}")
+    @PutMapping(value = "/todoid/{todoid}")
     public ResponseEntity<?> updateTodo(
             @RequestBody
                     Todo updateTodo,
