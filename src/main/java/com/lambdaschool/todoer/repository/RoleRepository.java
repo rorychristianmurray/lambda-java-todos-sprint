@@ -1,6 +1,6 @@
 package com.lambdaschool.todoer.repository;
 
-import com.lambdaschool.demo.model.Role;
+import com.lambdaschool.todoer.model.Role;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
