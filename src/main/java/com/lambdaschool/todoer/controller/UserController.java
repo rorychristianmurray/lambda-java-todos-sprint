@@ -57,6 +57,7 @@ public class UserController
 
     @PostMapping(value = "/todo/{userid}")
     public ResponseEntity<?> addNewTodo(@Valid @RequestBody Todo newTodo, @PathVariable int userid) throws URISyntaxException {
+        
         todoService.save(new Todo(newTodo.getDescription(), new Date(), userService.findUserById(userid)));
         return new ResponseEntity<>(null, HttpStatus.CREATED);
     }
